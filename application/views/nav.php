@@ -24,6 +24,7 @@
 	================================================-->
 	
     <?php if ($this->session->userdata('s_level')!==NULL): ?>
+    	<!-- Dropdown Trigger -->
   		<div class="chip dropdown-button btn" data-activates='dropdown1' style="margin: 1em 1em; float:right;">
    		 	<img src="<?= site_url("/css/yuna.jpg"); ?>" alt="Contact Person">
   		 	<?php echo $this->session->userdata('s_name');  ?>
@@ -37,12 +38,24 @@
 	  	<!-- Dropdown Structure -->
 	 	 <ul id='dropdown1' class='dropdown-content'>
 	 	 	<?php if ($this->session->userdata('s_level')==="1" || $this->session->userdata('s_level')==="2"): ?>
-				<li><a href ="<?= site_url("/CProfesor/MostrarPerfil/");?>">Perfil</a></li>
-				<li><a href ="#!">Contacto</a></li>
+				<li>
+					<!--<i class="material-icons" style="font-size:1rem">border_color</i>-->
+					<a href ="<?= site_url("/CProfesor/MostrarPerfil/");?>">Perfil</a>
+				</li>
+				<li>
+					<!--<i class="material-icons" style="font-size:1rem">assignment_ind</i>-->
+					<a href ="#!">Contacto</a>
+				</li>
 	 	 		
 	 	 	<?php else: ?>
-				<li><a href ="<?= site_url("/CAlumno/MostrarPerfil/");?>">Perfil</a></li>
-				<li><a href ="#!">Contacto</a></li>
+				<li>
+					<!--<i class="material-icons" style="font-size:1rem">border_color</i>-->
+					<a href ="<?= site_url("/CAlumno/MostrarPerfil/");?>">Perfil</a>
+				</li>
+				<li>
+					<!--<i class="material-icons" style="font-size:1rem">assignment_ind</i>-->
+					<a href ="#!">Contacto</a>
+				</li>
 	 	 	<?php endif ?>
 			<li class   ="divider"></li>
 			<li><a href ="<?= site_url("/Welcome/Cerrar/");?>">Cerrar Sesion</a></li>

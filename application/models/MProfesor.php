@@ -43,6 +43,7 @@ class MProfesor extends CI_Model {
 		$campos= array(
 			'id'=>$profesor['id'],
 			'name '=>$profesor['name'],
+			'lastname'=> $alumno['name2'],
 			'mail'=>$profesor['mail'],
 			'cube'=>$profesor['cube'],
 			'ext'=>$profesor['ext'],

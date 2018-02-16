@@ -17,7 +17,7 @@
 
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" class="validate" name="nombre">
+				          <input id="icon_prefix" type="text" class="validate" name="nombre" data-length="20">
 				          <label for="icon_prefix">First Name</label>
 				        </div>
 				        <div class="input-field col s6">
@@ -42,8 +42,8 @@
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">https</i>
-				          <input id="icon_telephone" type="text" class="validate" name="correo">
-				          <label for="icon_telephone">Correo</label>
+				          <input id="icon_telephone" type="email" class="validate" name="correo">
+				          <label for="icon_telephone" data-error="Correo no valido" data-success="Correo Valido">Correo</label>
 				        </div>
 				          <div class="input-field col s6">
 						    <select name="PE">

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>VAE | Inicio</title>
+	<title>SSA|</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?= site_url("/css/materialize.min.css"); ?>">
@@ -18,6 +18,10 @@
 			$('.carousel.carousel-slider').carousel({fullWidth: true});
 			/*Otro gato*/
 			$('.collapsible').collapsible();
+			/*----------  conteo de caracteres  ----------*/
+			$('input#input_text, textarea#textarea1').characterCounter();
+			
+        
 			
 		});
 	</script>

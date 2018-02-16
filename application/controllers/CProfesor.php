@@ -8,10 +8,23 @@ class CProfesor extends CI_Controller {
 
 	}
 	public function Index(){
-		$this->load->view("header");
-		$this->load->view("nav");
-		$this->load->view("VProfesor/profesor");
-		$this->load->view("footer");
+		if ($this->session->userdata('s_level')!==NULL) {
+			if ($this->session->userdata('s_level')==="1" || $this->session->userdata('s_level')==="2") {
+				$this->load->view("header");
+				$this->load->view("nav");
+				$this->load->view("VProfesor/profesor");
+				$this->load->view("footer");
+				# code...
+			}
+			else{
+				redirect("/CAlumno/","location");
+			}
+			# code...
+		} else {
+			redirect("/Welcome/","location");
+			# code...
+		}
+		
 	}
 	/*=========================================
 	=            Prueba de Grocery            =
@@ -46,9 +59,9 @@ class CProfesor extends CI_Controller {
 			//nombrar tabla
 			$crud->where('id',$this->session->userdata('s_id'));
 			$crud->set_subject('Perfil');
-			$crud->columns('name','mail','cube','ext'); //('columna1','columna2'...)
-			$crud->fields('name','mail','cube','ext','pass'); //('columna1','columna2'...)
-			$crud->display_as('name','Nombre')->display_as('mail','Correo')->display_as('cube','Cubiculo')->display_as('ext','Extencion Telefonico')->display_as('pass','Contraseña'); //('columna', 'como se muestra');una por cada
+			$crud->columns('name','lastname','mail','cube','ext'); //('columna1','columna2'...)
+			$crud->fields('name','lastname','mail','cube','ext','pass'); //('columna1','columna2'...)
+			$crud->display_as('name','Nombre')->display_as('lastname','Apellido')->display_as('mail','Correo')->display_as('cube','Cubiculo')->display_as('ext','Extencion Telefonico')->display_as('pass','Contraseña'); //('columna', 'como se muestra');una por cada
 			$crud->field_type('pass', 'password');
 			$crud->unset_add()->unset_delete()->unset_export()->unset_print()->unset_read();
 			$output= $crud->render();

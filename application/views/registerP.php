@@ -41,9 +41,9 @@
 				          <label for="icon_telephone">Cubículo</label>
 				        </div>
 				        <div class="input-field col s6">
-				          <i class="material-icons prefix">https</i>
-				          <input id="icon_telephone" type="text" class="validate" name="correo">
-				          <label for="icon_telephone">Correo</label>
+				          <i class="material-icons prefix">phone</i>
+				          <input id="icon_telephone" type="email" class="validate" name="correo">
+				          <label for="icon_telephone" data-error="Correo no valido" data-success="Correo Valido">Correo</label>
 				        </div><div class="input-field col s6">
 				          <i class="material-icons prefix">https</i>
 				          <input id="icon_telephone" type="password" class="validate" name="pass">

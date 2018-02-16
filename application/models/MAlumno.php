@@ -41,6 +41,7 @@ class MAlumno extends CI_Model {
 		$campos= array(
 			'id'=> $alumno['id'],
 			'name'=> $alumno['name'],
+			'lastname'=> $alumno['name2'],
 			'mail'=> $alumno['mail'],
 			'phone'=> $alumno['phone'],
 			'eduprogram'=> $alumno['eduprogram'],
