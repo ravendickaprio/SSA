@@ -66,7 +66,7 @@ class CProfesor extends CI_Controller {
 	public function RegistraCuerso(){
 		/*----------  recuperar datos del view metodod POST  ----------*/
 
-		$curso['idProfesor']= $this->session->userdata('s_name');
+		$curso['idProfesor']= $this->session->userdata('s_id');
 		$curso['idMateria']= $this->input->post('mat');
 		$curso['parcial']= $this->input->post('parsial1');
 		$curso['parcial2']= $this->input->post('parsial2');
