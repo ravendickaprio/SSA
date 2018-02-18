@@ -96,7 +96,7 @@
 					=            Si es Profesor            =
 					=====================================-->
 					
-					<li><a href="<?= site_url("/CProfesor/Session/");?>" class="black-text"><i class="material-icons">account_box</i>Abrir Curso</a></li>
+					<li><a href="<?= site_url("/CProfesor/abrircurso/");?>" class="black-text"><i class="material-icons">account_box</i>Abrir Curso</a></li>
 
 					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Cursos</a></li> 
 

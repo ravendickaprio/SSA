@@ -33,7 +33,26 @@ class MProfesor extends CI_Model {
 	}
 	
 	/*=====  End of Metodo Ingresar  ======*/
+	/*===================================================
+	=            Regresar Todas las Materias            =
+	===================================================*/
 	
+		public function seleccionamateria (){
+		$this->db->select('m.id,m.name,');
+		$this->db->from('materia m');
+		$ress=$this->db->get();
+		if($ress->num_rows()>0){
+			
+			return $ress->result();
+		} else {
+			return false;
+		}
+	}
+	
+	/*=====  End of Regresar Todas las Materias  ======*/
+	
+
+
 	/*========================================
 	=            Metodo Registrar            =
 	========================================*/
@@ -54,6 +73,33 @@ class MProfesor extends CI_Model {
 	}
 	
 	/*=====  End of Metodo Registrar  ======*/
+	/*=======================================
+	=            Registrar Curso            =
+	=======================================*/
+	public function RegistrarCurso($curso){
+		$camp= array(
+			'idProfesor'=>$curso['idProfesor'],
+			'idMateria'=>$curso['idMateria'],
+			'parcial'=>$curso['parcial'],
+			'parcial2'=>$curso['parcial2'],
+			'parcial3'=>$curso['parcial3'],
+			'tareas'=>$curso['tareas'],
+			'practicas'=>$curso['practicas'],
+			'proyecto'=>$curso['proyecto'],
+			'otro'=>$curso['otro'],
+			'Seccion'=>$curso['Seccion'],
+			'NRC'=>$curso['NRC'],
+			'Preiodo'=>$curso['Preiodo'],
+			'FechaInicio'=>$curso['FechaInicio'],
+			'FechaFin'=>$curso['FechaFin'],
+			'Salon'=>$curso['Salon'],
+			'Horario'=>$curso['Horario']
+		);
+		$this->db->insert('cursos',$camp);
+	}
+	
+	
+	/*=====  End of Registrar Curso  ======*/
 	
 
 

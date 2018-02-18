@@ -4,12 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class CProfesor extends CI_Controller {
 	function __construct() {
 		parent::__construct();
+		/*----------  Necesario cargar libreria de Grocery CRUD  ----------*/
+		
 		$this->load->library('grocery_CRUD');
+		$this->load->model('MProfesor');
 
 	}
 	public function Index(){
 		if ($this->session->userdata('s_level')!==NULL) {
-			if ($this->session->userdata('s_level')==="1" || $this->session->userdata('s_level')==="2") {
+			if ($this->session->userdata('s_level')!=="3" ) {
 				$this->load->view("header");
 				$this->load->view("nav");
 				$this->load->view("VProfesor/profesor");
@@ -26,6 +29,69 @@ class CProfesor extends CI_Controller {
 		}
 		
 	}
+
+	/*============================================
+	=            Vista de Abrir Curso            =
+	============================================*/
+	
+	public function abrircurso(){
+		$data["ress"]= $this->MProfesor->seleccionamateria();
+		$this->load->view("header");
+		$this->load->view("nav");
+		$this->load->view("VProfesor/VAbrirCursoP",$data);
+		$this->load->view("footer");
+	}
+	
+	
+	/*=====  End of Vista de Abrir Curso  ======*/
+	/*********************************************************************************************/
+	/*============================================
+	=            Consulta de Materias            =
+	============================================*/
+	/*public function Materias(){
+		$data["ress"]= $this->MProfesor->seleccionamateria();
+
+		$this->load->view("header");
+		$this->load->view("nav");
+		$this->load->view("inicio",$data);
+		$this->load->view("footer");
+	}	*/
+	
+	
+	/*=====  End of Consulta de Materias  ======*/
+
+	/*=======================================
+	=            Registrar Curso            =
+	=======================================*/
+	public function RegistraCuerso(){
+		/*----------  recuperar datos del view metodod POST  ----------*/
+
+		$curso['idProfesor']= $this->session->userdata('s_name');
+		$curso['idMateria']= $this->input->post('mat');
+		$curso['parcial']= $this->input->post('parsial1');
+		$curso['parcial2']= $this->input->post('parsial2');
+		$curso['parcial3']= $this->input->post('parsial3');
+		$curso['tareas']= $this->input->post('tareas');
+		$curso['practicas']= $this->input->post('practicas');
+		$curso['proyecto']= $this->input->post('proyecto');
+		$curso['otro']= $this->input->post('otro');
+		$curso['Seccion']= $this->input->post('seccion');
+		$curso['NRC']= $this->input->post('nrc');
+		$curso['Preiodo']= $this->input->post('pe');
+		$curso['FechaInicio']= $this->input->post('Finicio');
+		$curso['FechaFin']= $this->input->post('Ffinal');
+		$curso['Salon']= $this->input->post('salon');
+		$curso['Horario']= $this->input->post('horario');
+		$this->MProfesor->RegistrarCurso($curso);
+		redirect("/CProfesor/","location");
+
+
+	}
+	
+	
+	/*=====  End of Registrar Curso  ======*/
+	
+
 	/*=========================================
 	=            Prueba de Grocery            =
 	=========================================*/
@@ -50,6 +116,10 @@ class CProfesor extends CI_Controller {
 		}
 
 	}
+	/*======================================================
+	=            Grocery para Editar Elelemento            =
+	======================================================*/
+	
 	public function EditarPerfilP(){
 		try {
 			
@@ -72,10 +142,22 @@ class CProfesor extends CI_Controller {
 			show_error($e->getMessage().'----'.$e->getTraceAsString());
 		}
 	}
+	
+	
+	/*=====  End of Grocery para Editar Elelemento  ======*/
+	
+	/*=======================================================
+	=            View de Perfil con Grocery CRUD            =
+	=======================================================*/
+	
+	
 	public function MostrarPerfil(){
 		$this->load->view("header");
 		$this->load->view("nav");
 		$this->load->view("VProfesor/VEditarPerfilP");
 		$this->load->view("footer");
 	}
+	
+	/*=====  End of View de Perfil con Grocery CRUD  ======*/
+	
 }

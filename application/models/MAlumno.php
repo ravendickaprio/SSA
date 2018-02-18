@@ -19,7 +19,7 @@ class MAlumno extends CI_Model {
 			$s_usuario=array(
 				's_id' => $r->id,
 				's_name'=> $r->name,
-				's_level'=>3	);
+				's_level'=>"3"	);
 			/*----------  David Comento  ----------*/
 			//$luser=$r->name;
 			//$llevel=$r->level;

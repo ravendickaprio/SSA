@@ -8,7 +8,7 @@ class CAlumno extends CI_Controller {
 	}
 	public function Index(){
 		if ($this->session->userdata('s_level')!==NULL) {
-			if ($this->session->userdata('s_level')!=="1" || $this->session->userdata('s_level')!=="2") {
+			if ($this->session->userdata('s_level')==="3" ) {
 				# code...
 				$this->load->view("header");
 				$this->load->view("nav");

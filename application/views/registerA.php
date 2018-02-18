@@ -70,5 +70,5 @@
 		</form>
 	</div>
 </div>
-
+</div>
 <!--====  End of Registrar  ====-->
