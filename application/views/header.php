@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>SSA|</title>
+	<title>SSA|<?php if ($this->session->userdata('s_level')!==NULL){echo $this->session->userdata('s_name');}?></title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?= site_url("/css/materialize.min.css"); ?>">
@@ -28,8 +28,6 @@
 			    close: 'Ok',
 			    closeOnSelect: false // Close upon selecting a date,
 			  });
-        
-			
 		});
 	</script>
 </head>

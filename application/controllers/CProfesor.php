@@ -5,10 +5,8 @@ class CProfesor extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		/*----------  Necesario cargar libreria de Grocery CRUD  ----------*/
-		
 		$this->load->library('grocery_CRUD');
 		$this->load->model('MProfesor');
-
 	}
 	public function Index(){
 		if ($this->session->userdata('s_level')!==NULL) {
@@ -27,13 +25,10 @@ class CProfesor extends CI_Controller {
 			redirect("/Welcome/","location");
 			# code...
 		}
-		
 	}
-
 	/*============================================
 	=            Vista de Abrir Curso            =
 	============================================*/
-	
 	public function abrircurso(){
 		$data["ress"]= $this->MProfesor->seleccionamateria();
 		$this->load->view("header");
@@ -41,8 +36,6 @@ class CProfesor extends CI_Controller {
 		$this->load->view("VProfesor/VAbrirCursoP",$data);
 		$this->load->view("footer");
 	}
-	
-	
 	/*=====  End of Vista de Abrir Curso  ======*/
 	/*********************************************************************************************/
 	/*============================================
@@ -65,7 +58,6 @@ class CProfesor extends CI_Controller {
 	=======================================*/
 	public function RegistraCuerso(){
 		/*----------  recuperar datos del view metodod POST  ----------*/
-
 		$curso['idProfesor']= $this->session->userdata('s_id');
 		$curso['idMateria']= $this->input->post('mat');
 		$curso['parcial']= $this->input->post('parsial1');
@@ -84,21 +76,17 @@ class CProfesor extends CI_Controller {
 		$curso['Horario']= $this->input->post('horario');
 		$this->MProfesor->RegistrarCurso($curso);
 		redirect("/CProfesor/","location");
-
-
 	}
-	
 	
 	/*=====  End of Registrar Curso  ======*/
 	
-
+	
 	/*=========================================
 	=            Prueba de Grocery            =
 	=========================================*/
 	
 	public function Nose(){
 		try {
-			
 			$crud = new grocery_CRUD();
 			//seleccionar tabla
 			$crud->set_table('materia'); //se puede si el crud pero sin ;   crud->  set table ......set subject
@@ -114,7 +102,6 @@ class CProfesor extends CI_Controller {
 		} catch (Exception $e) {
 			show_error($e->getMessage().'----'.$e->getTraceAsString());
 		}
-
 	}
 	/*======================================================
 	=            Grocery para Editar Elelemento            =
@@ -142,15 +129,62 @@ class CProfesor extends CI_Controller {
 			show_error($e->getMessage().'----'.$e->getTraceAsString());
 		}
 	}
-	
-	
 	/*=====  End of Grocery para Editar Elelemento  ======*/
+
+	/*====================================================
+	=            Mostrar todos los profesores            =
+	====================================================*/
+	public function MostrarProfesores(){
+		try {
+			$crud = new grocery_CRUD();
+			//seleccionar tabla
+			$crud->set_table('profesor'); //se puede si el crud pero sin ;   crud->  set table ......set subject
+			//nombrar tabla
+			$crud->set_subject('Profesor');
+			$crud->columns('name','lastname','mail','cube','ext'); //('columna1','columna2'...)
+			$crud->fields('name','lastname','mail','cube','ext'); //('columna1','columna2'...)
+			$crud->display_as('name','Nombre')->display_as('lastname','Apellido')->display_as('mail','Correo')->display_as('cube','Cubiculo')->display_as('ext','Extencion Telefonico'); //('columna', 'como se muestra');una por cada
+			$crud->unset_add()->unset_delete()->unset_export()->unset_print()->unset_edit();
+			$output= $crud->render();
+			//llamar a la vista
+			$this->load->view('VAlumno/mostrarprofesor',$output);
+
+		} catch (Exception $e) {
+			show_error($e->getMessage().'----'.$e->getTraceAsString());
+		}
+	}
+	/*=====  End of Mostrar todos los profesores  ======*/
+	
+	/*===========================================================
+	=            Gorcery para Editar Cursos Profesor            =
+	===========================================================*/
+	public function EditarCursosP(){
+		try {
+			$crud = new grocery_CRUD();
+			//seleccionar tabla
+			$crud->set_table('cursos'); //se puede si el crud pero sin ;   crud->  set table ......set subject
+
+			//nombrar tabla
+			$crud->set_subject('Curso');
+			$crud->set_relation('idMateria','materia','name');//seleciona relacion y despliega en nombre real
+			$crud->columns('idMateria','Seccion','Preiodo','NRC','parcial'); //('columna1','columna2'...)
+			$crud->fields('Periodo','Preiodo','Seccion','NRC','parcial','parcial2','parcial3','tareas','practicas','proyecto'); //('columna1','columna2'...)
+			$crud->display_as('idMateria','Materia')->display_as('Preiodo','Periodo')->display_as('Seccion','Seccion')->display_as('NRC','NRC')->display_as('parcial','% Parcial 1 ')->display_as('parcial2','% Parcial 2')->display_as('parcial3','% Parcial 3')->display_as('tareas','% Tareas')->display_as('practicas','% Practicas')->display_as('proyecto','% Proyecto')->display_as('otro','% Otro'); //('columna', 'como se muestra');una por cada
+			$crud->unset_add()->unset_export()->unset_print();//->unset_read()->unset_delete();
+
+			$output= $crud->render();
+			//llamar a la vista
+			$this->load->view('VProfesor/cursos.php',$output);
+
+		} catch (Exception $e) {
+			show_error($e->getMessage().'----'.$e->getTraceAsString());
+		}
+	}
+	/*=====  End of Gorcery para Editar Cursos Profesor  ======*/
 	
 	/*=======================================================
 	=            View de Perfil con Grocery CRUD            =
 	=======================================================*/
-	
-	
 	public function MostrarPerfil(){
 		$this->load->view("header");
 		$this->load->view("nav");
@@ -159,5 +193,15 @@ class CProfesor extends CI_Controller {
 	}
 	
 	/*=====  End of View de Perfil con Grocery CRUD  ======*/
+	/*=======================================================
+	=            View de Cursos con Grocery CRUD            =
+	=======================================================*/
+	public function MostrarCursosP(){
+		$this->load->view("header");
+		$this->load->view("nav");
+		$this->load->view("VProfesor/VEditarCursosP");
+		$this->load->view("footer");
+	}
+	/*=====  End of View de Cursos con Grocery CRUD  ======*/
 	
 }

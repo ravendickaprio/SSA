@@ -98,9 +98,9 @@
 					
 					<li><a href="<?= site_url("/CProfesor/abrircurso/");?>" class="black-text"><i class="material-icons">account_box</i>Abrir Curso</a></li>
 
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Cursos</a></li> 
+					<li><a href="<?= site_url("/CProfesor/MostrarCursosP/"); ?>"><i class="material-icons">account_box</i>Cursos</a></li> 
 
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Alumnos Inscritos</a></li> 
+					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Alumnos </a></li> 
 
 					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Subir Calificaciones</a></li> 
 
@@ -118,7 +118,7 @@
 
 					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Calificaciones</a></li>
 
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Profesores</a></li>
+					<li><a href="<?= site_url("/CAlumno/MostrarPprofesores/"); ?>"><i class="material-icons">account_box</i>Profesores</a></li>
 					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Historial Académco</a></li>  
 				
 				<?php endif; ?>
@@ -143,6 +143,7 @@
 				
 
 			<?php endif; ?>
+
 			
 			<!--====  End of php-if de validacion de session  ====-->
 			
@@ -154,7 +155,9 @@
 			<!--Enlaces extra del nav
 			<li><a class="subheader">Subheader</a></li>
 			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
-
+			<li>
+				<img src="<?= site_url("/css/Imagenes/pts.png");  ?>" alt="" style="left-margin: 0em;width: 100%;">
+			</li>
 		</ul>
 	</div>
 	

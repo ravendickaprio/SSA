@@ -1,3 +1,9 @@
+<div class="container">
+  <div class="card-panel">
+<!--============================
+=            Cartas            =
+=============================-->
+
 <div class="row">
         <div class="col s12 m5">
           <div class="card">
@@ -34,4 +40,11 @@
     </div>
   </div>
 </div>
-      </div>
+</div>
+
+
+<!--====  End of Cartas  ====-->
+  </div>
+</div>
+
+
