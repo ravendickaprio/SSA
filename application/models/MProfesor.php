@@ -54,37 +54,29 @@ class MProfesor extends CI_Model {
 	/*===================================================
 	=      Mostrar Tabla Materias para el registro de alumnos       =
 	===================================================*/
-	
 		public function seleccionacurso(){
 		/*$this->db->select('c.idClave,c.idProfesor,c.idMateria, m.name,');
 		$this->db->from('cursos c ,materia m ');
 		$this->db->where('c.idProfesor',$this->session->userdata('s_id'));
 		//$this->db->where('c.idMateria','m.id');
 		$this->db->join('materia',' c.idMateria = m.id');*/
-
 		//$ress=$this->db->get();
 		$profe=$this->session->userdata('s_id');
-				$query2="Select materia.name, cursos.idClave, cursos.idProfesor, cursos.idMateria from materia inner join cursos on materia.id=cursos.idMateria where cursos.idProfesor='".$profe."'";
-				$ress=$this->db->query($query2);
-				
-		
+				$query2="Select materia.name, cursos.idClave, cursos.idProfesor, cursos.Seccion, cursos.idMateria from materia inner join cursos on materia.id=cursos.idMateria where cursos.idProfesor='".$profe."' ORDER BY cursos.idMateria";
+		$ress=$this->db->query($query2);
 		if($ress->num_rows()>0){
 			return $ress->result();
 		} else {
 			return false;
 		}
-		
 		return $ress;
 	}
 	
 	/*=====  End of Mostrar Tabla Materas  ======*/
 
-
 	/*========================================
 	=            Metodo Registrar            =
 	========================================*/
-	
-	
 	public function registrar($profesor){
 		$campos= array(
 			'id'=>$profesor['id'],
@@ -125,11 +117,21 @@ class MProfesor extends CI_Model {
 		$this->db->insert('cursos',$camp);
 	}
 	
-	
 	/*=====  End of Registrar Curso  ======*/
-	
-
-
+	/*==================================================
+	=            Registrar Alumnos al curso            =
+	==================================================*/
+	public function RegistrarAlumnosAMateria($idAlumnos,$idCurso){
+		for ($i=0;$i<count($idAlumnos);$i++) 
+      	{ 
+      		$campoalumno = array(
+      			'idAlumno'=>$idAlumnos[$i],
+      			'idCurso'=>$idCurso
+      		);
+      		$this->db->insert('calificaciones',$campoalumno);
+      	} 
+	}
+	/*=====  End of Registrar Alumnos al curso  ======*/
 
 	public function Check($user, $password) {
 		$this->db->select("id, name, pass, level")->where("id",$user)->where("pass",$password);

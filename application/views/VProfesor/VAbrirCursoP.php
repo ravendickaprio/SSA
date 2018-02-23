@@ -45,10 +45,22 @@
 				          <input id="icon_prefix" type="text" class="validate" name="nrc">
 				          <label for="icon_prefix">NRC </label>
 				        </div>
-				        <div class="input-field col s6 m2">
-				          <input id="icon_prefix" type="text" class="validate" name="seccion">
-				          <label for="icon_prefix">Seccion</label>
-				        </div>
+
+
+						<div class="input-field col s6 m2">
+							<select name="seccion">
+								<option value="" disabled selected>Seccion</option>
+								<option value="101">101</option>
+								<option value="102">102</option>
+								<option value="103">103</option>
+								<option value="104">104</option>
+								<option value="105">105</option>
+								<option value="106">106</option>
+							</select>
+							<label>Elije la Seccion</label>
+						</div>
+
+				       
 
 				        <div class="input-field col s6 offset-m1 m2">
 				          <input id="icon_prefix" type="text" class="datepicker" name="Finicio">
@@ -63,7 +75,7 @@
 				          <label for="icon_prefix">Salon</label>
 				        </div>
 				        <div class="input-field col s6 m2">
-				          <input id="icon_prefix" type="text" class="validate" name="horario">
+				          <input id="icon_prefix" type="text" class="timepicker" name="horario">
 				          <label for="icon_prefix">Horario</label>
 				        </div>
 				        <!--Salon y horario-->

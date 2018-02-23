@@ -6,6 +6,7 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		$this->load->model('MProfesor');
 		$this->load->model('MAlumno');
+		//$this->load->library('encryption');
 
 	}
 	public function Index() {
@@ -39,7 +40,6 @@ class Welcome extends CI_Controller {
 			$res= $this->MProfesor->ingresar($user,$pass);
 			if($res==1)
 				/*----------  Redirecciona a Controlador  ----------*/
-				
 			{redirect("/CProfesor/","location");}
 			else
 			{redirect("/Welcome/Session","location");}
@@ -93,7 +93,6 @@ class Welcome extends CI_Controller {
 		$profesor['cube']= $this->input->post('cubi');
 		$profesor['pass']= $this->input->post('pass');
 		$profesor['mail']= $this->input->post('correo');
-
 		$this->MProfesor->registrar($profesor);
 		redirect("/Welcome/","location");
 	}
@@ -105,10 +104,7 @@ class Welcome extends CI_Controller {
 		$alumno['phone']= $this->input->post('cel');
 		$alumno['eduprogram']= $this->input->post('PE');
 		$alumno['pass']= $this->input->post('pass');
-
 		$this->MAlumno->registrar($alumno);
 		redirect("/Welcome/","location");
-
 	}
-
 }

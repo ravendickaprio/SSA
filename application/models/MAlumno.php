@@ -57,7 +57,7 @@ class MAlumno extends CI_Model {
 	=            seleccionaalumno()            =
 	==========================================*/
 	public function seleccionaalumno (){
-		$this->db->select('a.id,a.name,');
+		$this->db->select('a.id,a.name,a.lastname');
 		$this->db->from('alumno a');
 		$ress=$this->db->get();
 		if($ress->num_rows()>0){
@@ -78,6 +78,23 @@ class MAlumno extends CI_Model {
 		else
 			return false;
 	}
+	
+	/*============================================
+	=            Seleccionar materias            =
+	============================================*/
+	public function seleccionaMaterias(){
+		$alumno=$this->session->userdata('s_id');
+				$query2="Select materia.name, cursos.idClave, cursos.idProfesor, cursos.Seccion, cursos.idMateria from materia inner join cursos on materia.id=cursos.idMateria where cursos.idProfesor='".$alumno."' ORDER BY cursos.idMateria";
+				$ress=$this->db->query($query2);
+		if($ress->num_rows()>0){
+			return $ress->result();
+		} else {
+			return false;
+		}
+	}
+	
+	
+	/*=====  End of Seleccionar materias  ======*/
 	
 
 }

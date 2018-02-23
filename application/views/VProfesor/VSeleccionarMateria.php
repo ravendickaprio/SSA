@@ -1,5 +1,5 @@
 <!--==============================================
-=            Ingrear alumnos a cursos            =
+=         Seleccionar Materia y Enviar a Subri Calificaciones                =
 ===============================================-->
 
 <div class="container">
@@ -8,11 +8,11 @@
 		=            Inicio de Formulario por el Metodo Post            =
 		==============================================================-->
 		
-			<form action="<?= site_url("/CProfesor/RegistraAlumno/"); ?>" method="POST">
+			<form action="<?= site_url("/CProfesor/SubirCalificaciones"); ?>" method="POST">
 			<div class="row">
 				  <form class="col s12">
 				      <div class="row">
-						
+						<h2 class="col offset-m1 s12">Seleccionar Materia</h2>
 						<!--===================================================
 						=            Desplegable de Tabla Materias            =
 						========================s============================-->
@@ -35,19 +35,8 @@
 							<label>Elije una Materia</label>
 						</div>
 						<!--====  End of Desplegable de Tabla Materias  ====-->
-				        <div class="input-field col s6  offset-m1 m4">
-							<select multiple name="alumnos[]">
-								<option value="" disabled selected>Alumnos</option>					
-								<?php foreach ($ress3 as $i=> $ress3):?>							
-										<?php if ($ress3!==false): ?>
-										<option value="<?php echo $ress3->id ?>"><?php echo $ress3->name." ".$ress3->lastname ?></option>
-										<?php else: ?>
-										<option value="" disabled="">Alumnos no disponibles</option>
-										<?php endif; ?>
-								<?php endforeach;?>
-							</select>
-							<label>Elije una Materia</label>
-						</div>
+				        
+				        
 				    </div>
 			        <!--====  End of Parte de Calificacion  ====
     			</form>-->
@@ -55,7 +44,7 @@
 
 			<div class="divider"></div>
 			<div class="row">
-				<p class="center-align"><button class="btn waves-effect">Registrar Materia</button></p>
+				<p class="center-align"><button class="btn waves-effect">Seleccionar Materia</button></p>
 			</div>
 		</form>
 	</div>
@@ -63,5 +52,5 @@
 </div>
 
 
-<!--====  End of Ingrear alumnos a cursos  ====-->
+<!--====  End of Seleccionar Materia y Enviar a Subri Calificaciones  ====-->
 

@@ -18,12 +18,17 @@
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
 				          <input id="icon_prefix" type="text" class="validate" name="nombre" data-length="20">
-				          <label for="icon_prefix">First Name</label>
+				          <label for="icon_prefix"> Nombre</label>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" class="validate" name="apellido">
-				          <label for="icon_prefix">Last Name</label>
+				          <input id="icon_prefix" type="text" class="validate" name="apellido" data-length="20">
+				          <label for="icon_prefix">Apellido </label>
+				        </div>
+				        <div class="input-field col s6">
+				          <i class="material-icons prefix">https</i>
+				          <input id="icon_telephone" type="password" class="validate" name="pass">
+				          <label for="icon_telephone">Contraseña</label>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">rowing</i>
@@ -36,22 +41,17 @@
 				          <label for="icon_telephone">Telephone</label>
 				        </div>
 				        <div class="input-field col s6">
-				          <i class="material-icons prefix">https</i>
-				          <input id="icon_telephone" type="password" class="validate" name="pass">
-				          <label for="icon_telephone">Contraseña</label>
-				        </div>
-				        <div class="input-field col s6">
-				          <i class="material-icons prefix">https</i>
+				          <i class="material-icons prefix">rowing</i>
 				          <input id="icon_telephone" type="email" class="validate" name="correo">
 				          <label for="icon_telephone" data-error="Correo no valido" data-success="Correo Valido">Correo</label>
 				        </div>
 				          <div class="input-field col s6">
 						    <select name="PE">
-						      <option value="" disabled selected>Choose your figther</option>
+						      <option value="" disabled selected>Plan de estudio</option>
 						      <option value="1">Fenix</option>
 						      <option value="2">Minerva</option>
 						    </select>
-						    <label>Choose your figther</label>
+						    <label>Elejir Plan de estudio</label>
 						  </div>
 						<!--    <label>Plan de estudio</label>
 						  <select class="browser-default">

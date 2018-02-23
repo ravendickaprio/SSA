@@ -18,12 +18,12 @@
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
 				          <input id="icon_prefix" type="text" class="validate" name="nombre">
-				          <label for="icon_prefix">First Name</label>
+				          <label for="icon_prefix">Primer Nombre</label>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">account_circle</i>
 				          <input id="icon_prefix" type="text" class="validate" name="apellido">
-				          <label for="icon_prefix">Last Name</label>
+				          <label for="icon_prefix">Apellido	</label>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">rowing</i>
@@ -33,7 +33,7 @@
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">phone</i>
 				          <input id="icon_telephone" type="tel" class="validate" name="cel">
-				          <label for="icon_telephone">Telephone</label>
+				          <label for="icon_telephone">Extencion Telefonica</label>
 				        </div>
 				        <div class="input-field col s6">
 				          <i class="material-icons prefix">child_care</i>

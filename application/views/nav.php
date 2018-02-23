@@ -43,20 +43,20 @@
 					<!--<i class="material-icons" style="font-size:1rem">border_color</i>-->
 					<a href ="<?= site_url("/CProfesor/MostrarPerfil/");?>">Perfil</a>
 				</li>
-				<li>
-					<!--<i class="material-icons" style="font-size:1rem">assignment_ind</i>-->
+				<!--<li>
+					<i class="material-icons" style="font-size:1rem">assignment_ind</i>
 					<a href ="#!">Contacto</a>
-				</li>
+				</li>-->
 	 	 		
 	 	 	<?php else: ?>
 				<li>
 					<!--<i class="material-icons" style="font-size:1rem">border_color</i>-->
 					<a href ="<?= site_url("/CAlumno/MostrarPerfil/");?>">Perfil</a>
 				</li>
-				<li>
-					<!--<i class="material-icons" style="font-size:1rem">assignment_ind</i>-->
+				<!--<li>
+					<i class="material-icons" style="font-size:1rem">assignment_ind</i>
 					<a href ="#!">Contacto</a>
-				</li>
+				</li>-->
 	 	 	<?php endif ?>
 			<li class   ="divider"></li>
 			<li><a href ="<?= site_url("/Welcome/Cerrar/");?>">Cerrar Sesion</a></li>
@@ -103,11 +103,15 @@
 
 					<li><a href="<?= site_url("/CProfesor/IngresarAlumnos/"); ?>"><i class="material-icons">account_box</i> Ingresar Alumnos </a></li> 
 
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Subir Calificaciones</a></li> 
+					<li><a href="<?= site_url("/CProfesor/SeleccionarMateria/"); ?>"><i class="material-icons">account_box</i>Subir Calificaciones</a></li> 
 
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Estadisticas</a></li> 
+					<li><a href="<?= site_url("/CProfesor/Estadisticas/"); ?>"><i class="material-icons">account_box</i>Estadisticas</a></li> 
 
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Historial</a></li> 
+					<li><a href="<?= site_url("/CProfesor/SeleccionarAlumno/"); ?>"><i class="material-icons">account_box</i>Historial</a></li> 
+					<?php if ($this->session->userdata('s_level')==="1"): ?>
+						<li><a href="<?= site_url("/CProfesor/Estadisticas/");?>" class="black-text"><i class="material-icons">account_box</i>.Fortune</a></li>
+
+					<?php endif ?>
 
 
 				<?php else: #nivel 3 ?> 
@@ -115,13 +119,13 @@
 					=            Si es Alumno            =
 					===================================-->
 					
-					<li><a href="<?= site_url("/Welcome/Session/");?>" class="black-text"><i class="material-icons">account_box</i>Materias</a></li>
+					<li><a href="<?= site_url("/CAlumno/MostrarMaterias/");?>" class="black-text"><i class="material-icons">account_box</i>Materias</a></li>
 
 					<li><a href="<?= site_url("/CAlumno/VMostrarCalificaciones/"); ?>"><i class="material-icons">account_box</i>Calificaciones</a></li>
 
 					<li><a href="<?= site_url("/CAlumno/MostrarPprofesores/"); ?>"><i class="material-icons">account_box</i>Profesores</a></li>
 					
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Historial Académco</a></li>  
+					<li><a href="<?= site_url("/CAlumno/VMostrarCalificaciones/"); ?>"><i class="material-icons">account_box</i>Historial Académco</a></li>  
 				
 				<?php endif; ?>
 			<?php else: ?>
@@ -156,10 +160,10 @@
 			
 			<!--Enlaces extra del nav
 			<li><a class="subheader">Subheader</a></li>
-			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
+			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
 			<li>
 				<img src="<?= site_url("/css/Imagenes/pts.png");  ?>" alt="" style="left-margin: 0em;width: 100%;">
-			</li>
+			</li>-->
 		</ul>
 	</div>
 	
