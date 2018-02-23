@@ -27,7 +27,8 @@
     	<!-- Dropdown Trigger -->
   		<div class="chip dropdown-button btn" data-activates='dropdown1' style="margin: 1em 1em; float:right;">
    		 	<img src="<?= site_url("/css/yuna.jpg"); ?>" alt="Contact Person">
-  		 	<?php echo $this->session->userdata('s_name');  ?>
+  		 	<?php $nombre=$this->session->userdata('s_name')." ".$this->session->userdata('s_lastname');
+  		 		echo $nombre;?>
   		</div>
 	
 	<!--====  End of Session Activa con imagen  ====-->
@@ -100,7 +101,7 @@
 
 					<li><a href="<?= site_url("/CProfesor/MostrarCursosP/"); ?>"><i class="material-icons">account_box</i>Cursos</a></li> 
 
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Alumnos </a></li> 
+					<li><a href="<?= site_url("/CProfesor/IngresarAlumnos/"); ?>"><i class="material-icons">account_box</i> Ingresar Alumnos </a></li> 
 
 					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Subir Calificaciones</a></li> 
 
@@ -116,9 +117,10 @@
 					
 					<li><a href="<?= site_url("/Welcome/Session/");?>" class="black-text"><i class="material-icons">account_box</i>Materias</a></li>
 
-					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Calificaciones</a></li>
+					<li><a href="<?= site_url("/CAlumno/VMostrarCalificaciones/"); ?>"><i class="material-icons">account_box</i>Calificaciones</a></li>
 
 					<li><a href="<?= site_url("/CAlumno/MostrarPprofesores/"); ?>"><i class="material-icons">account_box</i>Profesores</a></li>
+					
 					<li><a href="<?= site_url("/Welcome/Register/"); ?>"><i class="material-icons">account_box</i>Historial Académco</a></li>  
 				
 				<?php endif; ?>

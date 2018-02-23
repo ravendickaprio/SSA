@@ -10,7 +10,7 @@
 		
 		<form action="<?= site_url("/Welcome/Registrar_Alumno/"); ?>" method="POST">
 			<div class="row">
-				 <form class="col s12">
+				 <form class="col s10 offset-s1">
 				      <div class="row">
 						
 						

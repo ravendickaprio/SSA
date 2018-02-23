@@ -7,6 +7,7 @@ class CProfesor extends CI_Controller {
 		/*----------  Necesario cargar libreria de Grocery CRUD  ----------*/
 		$this->load->library('grocery_CRUD');
 		$this->load->model('MProfesor');
+		$this->load->model('MAlumno');
 	}
 	public function Index(){
 		if ($this->session->userdata('s_level')!==NULL) {
@@ -37,6 +38,18 @@ class CProfesor extends CI_Controller {
 		$this->load->view("footer");
 	}
 	/*=====  End of Vista de Abrir Curso  ======*/
+/*=======================================================
+	=            View de Perfil con Grocery CRUD            =
+	=======================================================*/
+	public function MostrarPerfil(){
+		$this->load->view("header");
+		$this->load->view("nav");
+		$this->load->view("VProfesor/VEditarPerfilP");
+		$this->load->view("footer");
+	}
+	
+	/*=====  End of View de Perfil con Grocery CRUD  ======*/
+
 	/*********************************************************************************************/
 	/*============================================
 	=            Consulta de Materias            =
@@ -140,6 +153,10 @@ class CProfesor extends CI_Controller {
 			//seleccionar tabla
 			$crud->set_table('profesor'); //se puede si el crud pero sin ;   crud->  set table ......set subject
 			//nombrar tabla
+
+			//$crud->where('id','cursos.idProfesor')->where('calificaciones.idAlumno',$this->session->userdata('s_id'))->where('cursos.idClave','calificaciones.idCurso');
+
+
 			$crud->set_subject('Profesor');
 			$crud->columns('name','lastname','mail','cube','ext'); //('columna1','columna2'...)
 			$crud->fields('name','lastname','mail','cube','ext'); //('columna1','columna2'...)
@@ -166,6 +183,8 @@ class CProfesor extends CI_Controller {
 
 			//nombrar tabla
 			$crud->set_subject('Curso');
+			$crud->where('idProfesor',$this->session->userdata('s_id'));
+			
 			$crud->set_relation('idMateria','materia','name');//seleciona relacion y despliega en nombre real
 			$crud->columns('idMateria','Seccion','Preiodo','NRC','parcial'); //('columna1','columna2'...)
 			$crud->fields('Periodo','Preiodo','Seccion','NRC','parcial','parcial2','parcial3','tareas','practicas','proyecto'); //('columna1','columna2'...)
@@ -181,18 +200,37 @@ class CProfesor extends CI_Controller {
 		}
 	}
 	/*=====  End of Gorcery para Editar Cursos Profesor  ======*/
+	/*======================================
+	=            RegistraAlumno            =
+	======================================*/
 	
-	/*=======================================================
-	=            View de Perfil con Grocery CRUD            =
-	=======================================================*/
-	public function MostrarPerfil(){
+	public function RegistraAlumno(){
+		$hola=$this->input->post('alumnos');
+		foreach ($hola as $key => $hola) {
+			echo "$hola";
+			# code...
+		}
+
+	}
+	
+	/*=====  End of RegistraAlumno  ======*/
+	
+	
+	/*===============================================
+	=            Vew de Ingresar Alumnos            =
+	===============================================*/
+	public function IngresarAlumnos(){
+		$data["ress2"]= $this->MProfesor->seleccionacurso();
+		$data["ress3"]= $this->MAlumno->seleccionaalumno();
 		$this->load->view("header");
 		$this->load->view("nav");
-		$this->load->view("VProfesor/VEditarPerfilP");
+		$this->load->view("VProfesor/VIngresarAlumnos",$data);
 		$this->load->view("footer");
 	}
 	
-	/*=====  End of View de Perfil con Grocery CRUD  ======*/
+	
+	/*=====  End of Vew de Ingresar Alumnos  ======*/
+	
 	/*=======================================================
 	=            View de Cursos con Grocery CRUD            =
 	=======================================================*/

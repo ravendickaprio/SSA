@@ -61,4 +61,39 @@ class CAlumno extends CI_Controller {
 		$this->load->view("VAlumno/VMostrarProfesores");
 		$this->load->view("footer");
 	}
+	public function VMostrarCalificaciones(){
+		$this->load->view("header");
+		$this->load->view("nav");
+		$this->load->view("VAlumno/VMostrarCalificaciones");
+		$this->load->view("footer");
+	}
+	/*====================================================
+	=            Mostrar Calificaciones        =
+	====================================================*/
+	public function MostrarCalificaciones(){
+		try {
+			$crud = new grocery_CRUD();
+			//seleccionar tabla
+			$crud->set_table('calificaciones'); //se puede si el crud pero sin ;   crud->  set table ......set subject
+			//nombrar tabla
+
+			$crud->set_subject('Calificaciones');//label de la tabla
+
+			//$crud->column('materia.name')->where('idCurso','cursos.idClave')->where('cursos.idMateria','materia.id');
+	
+			$crud->columns('parcial','parcial2','parcial3','tareas','practicas','proyecto','otro','promedio'); //('columna1','columna2'...)
+			$crud->fields('parcial','parcial2','parcial3','tareas','practicas','proyecto','otro','promedio'); //('columna1','columna2'...)
+
+			$crud->display_as('parcial','Parcial 1')->display_as('parcial2','Parcial 2')->display_as('parcial3','Parcial 3')->display_as('tareas','Tareas')->display_as('practicas','Practicas')->display_as('proyecto','Proyecto')->display_as('otro','Extras'); //('columna', 'como se muestra');una por cada
+			$crud->unset_add()->unset_delete()->unset_export()->unset_print()->unset_edit();
+			$output= $crud->render();
+			//llamar a la vista
+			$this->load->view('VAlumno/mostrarcalificacion',$output);
+
+		} catch (Exception $e) {
+			show_error($e->getMessage().'----'.$e->getTraceAsString());
+		}
+	}
+	/*=====  End of MostrarCalificaciones  ======*/
+	
 }

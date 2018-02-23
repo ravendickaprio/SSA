@@ -8,7 +8,7 @@ class MAlumno extends CI_Model {
 	
 	public function ingresar ($user, $pass){
 
-		$this->db->select('a.id,a.name,a.pass');
+		$this->db->select('a.id,a.name,a.pass,a.lastname');
 		$this->db->from('alumno a');
 		$this->db->where('a.id',$user);
 		$this->db->where('a.pass',$pass);
@@ -19,7 +19,8 @@ class MAlumno extends CI_Model {
 			$s_usuario=array(
 				's_id' => $r->id,
 				's_name'=> $r->name,
-				's_level'=>"3"	);
+				's_level'=>"3",
+				's_lastname'=>$r->lastname	);
 			/*----------  David Comento  ----------*/
 			//$luser=$r->name;
 			//$llevel=$r->level;
@@ -52,6 +53,22 @@ class MAlumno extends CI_Model {
 	
 	
 	/*=====  End of Metodo Registrar  ======*/
+	/*==========================================
+	=            seleccionaalumno()            =
+	==========================================*/
+	public function seleccionaalumno (){
+		$this->db->select('a.id,a.name,');
+		$this->db->from('alumno a');
+		$ress=$this->db->get();
+		if($ress->num_rows()>0){
+			return $ress->result();
+		} else {
+			return false;
+		}
+	}
+	
+	
+	/*=====  End of seleccionaalumno()  ======*/
 	
 	public function Check($user, $password) {
 		$this->db->select("id, name, pass, level")->where("id",$user)->where("pass",$password);

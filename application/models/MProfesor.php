@@ -8,7 +8,7 @@ class MProfesor extends CI_Model {
 	
 	
 	public function ingresar ($user, $pass){
-		$this->db->select('p.id,p.name,p.pass,p.level');
+		$this->db->select('p.id,p.name,p.pass,p.level,p.lastname');
 		$this->db->from('profesor p');
 		$this->db->where('p.id',$user);
 		$this->db->where('p.pass',$pass);
@@ -18,7 +18,8 @@ class MProfesor extends CI_Model {
 			$s_usuario=array(
 				's_id' => $r->id,
 				's_name'=> $r->name,
-				's_level'=>$r->level);
+				's_level'=>$r->level,
+				's_lastname'=>$r->lastname);
 			/*----------  David Comento  ----------*/
 			
 			//$luser=$r->name;
@@ -50,7 +51,33 @@ class MProfesor extends CI_Model {
 	}
 	
 	/*=====  End of Regresar Todas las Materias  ======*/
+	/*===================================================
+	=      Mostrar Tabla Materias para el registro de alumnos       =
+	===================================================*/
 	
+		public function seleccionacurso(){
+		/*$this->db->select('c.idClave,c.idProfesor,c.idMateria, m.name,');
+		$this->db->from('cursos c ,materia m ');
+		$this->db->where('c.idProfesor',$this->session->userdata('s_id'));
+		//$this->db->where('c.idMateria','m.id');
+		$this->db->join('materia',' c.idMateria = m.id');*/
+
+		//$ress=$this->db->get();
+		$profe=$this->session->userdata('s_id');
+				$query2="Select materia.name, cursos.idClave, cursos.idProfesor, cursos.idMateria from materia inner join cursos on materia.id=cursos.idMateria where cursos.idProfesor='".$profe."'";
+				$ress=$this->db->query($query2);
+				
+		
+		if($ress->num_rows()>0){
+			return $ress->result();
+		} else {
+			return false;
+		}
+		
+		return $ress;
+	}
+	
+	/*=====  End of Mostrar Tabla Materas  ======*/
 
 
 	/*========================================
@@ -62,7 +89,7 @@ class MProfesor extends CI_Model {
 		$campos= array(
 			'id'=>$profesor['id'],
 			'name '=>$profesor['name'],
-			'lastname'=> $alumno['name2'],
+			'lastname'=> $profesor['name2'],
 			'mail'=>$profesor['mail'],
 			'cube'=>$profesor['cube'],
 			'ext'=>$profesor['ext'],
@@ -112,6 +139,8 @@ class MProfesor extends CI_Model {
 		else
 			return false;
 	}
+
+
 	//SELECT `profesor`.`id`, `profesor`.`name`, `profesor`.`pass`
 //FROM `profesor
 
