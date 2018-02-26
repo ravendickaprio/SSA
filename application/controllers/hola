@@ -1,0 +1,20 @@
+9-Febrero 2018
+Pasos para un programa en RMI
+Para definir un programa distribuido, teneos que realizar diferentes módulos como objetos locales (que se ejecutan como programas tipo cliente) y los objetos remotos que son los programas a invocar y que son los programas a invocar y que estánen el servidor.
+
+Definimos entonces a :
+	*InterfaceRemota: es una interfaz java con todos los métodos que queremos invocar de forma remota, es decir , los métodos que queremos llamar desde el cliente.
+	
+	*Objeto Remoto: es una clase con la implementacion de los métodos de InterfaceRemota
+
+	*Objeto Remoto_Stub: es una clase que implementa InterfaceRemota, pero cada método se encarga de hacer una llaada a través de la red al ObjetoRemoto del servidor, esperar el resultado y devolverlo, Esta clase es la que ve el cliente y no nesecitamos codificarla, java hace automaticamente para nosotoso a partir de ObjetoRemoto compilando con rmic.
+
+1.-En la computadora del servidor deben de correr los siguientes programas 
+	*rmiregistry:  Este es un programa que nos proporciona java ,una vez arrancado permite que registremos en él objetos para que puedan ser invocados remotamente y admite peticiones para ejecutar métodos de estos objetos.
+
+	*Servidor : Este es un programa que debemos de hacer nosotros. Debe de instanciar el ObjetoRemoto y registrarlo en el rmiregisty . Una vez registrado el ObjetoRemoto, el Servidor no muere, sino queda vivo. Cuando  un cliente llama a un método ObjetoRemoto, el código de este método se ejecutá en este proceso
+
+2.-En la computadora del cliente debe correr el programa:
+	*CLiente Este programa lo debemos de hacer nosotros.
+	Pide al rmiregistry de la computadora servidor una referencia del ObjetoRemoto. Una vez que la consigue ( en realidad obtiene un ObjetoRemoto_Stub) puede hacer llamados a sus métodos. los métodos se ejecutaran en el servidor, pero el cliente quedará bloqueado en cada llamada hasta que el servidor termine 
+w

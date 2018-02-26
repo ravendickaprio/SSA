@@ -12,52 +12,43 @@
 			<div class="row">
 				 <form class="col s10 offset-s1">
 				      <div class="row">
-						
-						
-
-				        <div class="input-field col s6">
+						<h2 class="col offset-s1 offset-m1 s11 m11">Formulario de Registro Profesor</h2>	
+						<h6 class="col offset-s1 offset-m1 s11 m11">Llena los campos</h6>	
+				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">account_circle</i>
 				          <input id="icon_prefix" type="text" class="validate" name="nombre">
-				          <label for="icon_prefix">Primer Nombre</label>
+				          <label for="icon_prefix">*Primer Nombre</label>
 				        </div>
-				        <div class="input-field col s6">
+				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">account_circle</i>
 				          <input id="icon_prefix" type="text" class="validate" name="apellido">
 				          <label for="icon_prefix">Apellido	</label>
 				        </div>
-				        <div class="input-field col s6">
-				          <i class="material-icons prefix">rowing</i>
+				        <div class="input-field col s6 offset-m1 m4">
+				          <i class="material-icons prefix">school</i>
 				          <input id="icon_prefix" type="text" class="validate" name="mat">
-				          <label for="icon_prefix">Matricula</label>
+				          <label for="icon_prefix">*Matricula</label>
 				        </div>
-				        <div class="input-field col s6">
+				        <div class="input-field col s6 offset-m1 m4">
+				          <i class="material-icons prefix">email</i>
+				          <input id="icon_telephone" type="email" class="validate" name="correo">
+				          <label for="icon_telephone" data-error="Correo no valido" data-success="Correo Valido">* Correo</label>
+				        </div>
+				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">phone</i>
 				          <input id="icon_telephone" type="tel" class="validate" name="cel">
 				          <label for="icon_telephone">Extencion Telefonica</label>
 				        </div>
-				        <div class="input-field col s6">
-				          <i class="material-icons prefix">child_care</i>
+				        <div class="input-field col s6 offset-m1 m4">
+				          <i class="material-icons prefix">store</i>
 				          <input id="icon_telephone" type="tel" class="validate" name="cubi">
 				          <label for="icon_telephone">Cubículo</label>
 				        </div>
-				        <div class="input-field col s6">
-				          <i class="material-icons prefix">phone</i>
-				          <input id="icon_telephone" type="email" class="validate" name="correo">
-				          <label for="icon_telephone" data-error="Correo no valido" data-success="Correo Valido">Correo</label>
-				        </div><div class="input-field col s6">
+				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">https</i>
 				          <input id="icon_telephone" type="password" class="validate" name="pass">
-				          <label for="icon_telephone">Contraseña</label>
+				          <label for="icon_telephone">* Contraseña</label>
 				        </div>
-				         
-						<!--    <label>Plan de estudio</label>
-						  <select class="browser-default">
-						    <option value="" disabled selected>Choose your figther-fosil</option>
-						    <option value="1">Fenix</option>
-						    <option value="2">Minerva</option>
-						    <option value="3">A la minerga</option>
-						  </select>
-				      </div>-->
     			</form>
 			</div>
 			<div class="divider"></div>

@@ -35,7 +35,6 @@ class Welcome extends CI_Controller {
 		 * 1 Profesor
 		 * 2 ALumno
 		 */
-		
 		if($lvl==1){
 			$res= $this->MProfesor->ingresar($user,$pass);
 			if($res==1)
@@ -93,8 +92,21 @@ class Welcome extends CI_Controller {
 		$profesor['cube']= $this->input->post('cubi');
 		$profesor['pass']= $this->input->post('pass');
 		$profesor['mail']= $this->input->post('correo');
-		$this->MProfesor->registrar($profesor);
-		redirect("/Welcome/","location");
+		$this->form_validation->set_rules('id','mat','required|min_length[6]');
+		$this->form_validation->set_rules('name','nombre','required');
+		$this->form_validation->set_rules('lastname','apellido','required');
+		$this->form_validation->set_rules('ext','cel','numeric');
+		$this->form_validation->set_rules('cubiculo','cubi','numeric');
+		$this->form_validation->set_rules('pass','pass','required');
+		$this->form_validation->set_rules('mail','correo','required|valid_email');
+        if ($this->form_validation->run() == FALSE)
+        {
+			redirect("/Welcome/RegisterP/","location");
+        }
+        else
+        {
+			$this->MProfesor->registrar($profesor);
+        }
 	}
 	public function Registrar_Alumno(){
 		$alumno['id']= $this->input->post('mat');
@@ -104,7 +116,20 @@ class Welcome extends CI_Controller {
 		$alumno['phone']= $this->input->post('cel');
 		$alumno['eduprogram']= $this->input->post('PE');
 		$alumno['pass']= $this->input->post('pass');
-		$this->MAlumno->registrar($alumno);
-		redirect("/Welcome/","location");
+		$this->form_validation->set_rules('id','id','required|min_length[9]');
+		$this->form_validation->set_rules('lastname','apellido','required');
+		$this->form_validation->set_rules('ext','cel','required|numeric');
+		$this->form_validation->set_rules('mail','correo','required|valid_email');
+		$this->form_validation->set_rules('programedu','PE','required');
+		$this->form_validation->set_rules('pass','pass','required');
+		if ($this->form_validation->run() == FALSE)
+        {
+			redirect("/Welcome/RegisterA","location");
+        }
+        else
+        {
+			redirect("/Welcome/","location");
+			$this->MAlumno->registrar($alumno);
+        }
 	}
 }
