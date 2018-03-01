@@ -16,22 +16,22 @@
 						<h6 class="col offset-s1 offset-m1 s11 m11">Llena los campos</h6>	
 				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" class="validate" name="nombre">
+				          <input id="icon_prefix" type="text" class="validate" name="nombre" required>
 				          <label for="icon_prefix">*Primer Nombre</label>
 				        </div>
 				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">account_circle</i>
-				          <input id="icon_prefix" type="text" class="validate" name="apellido">
+				          <input id="icon_prefix" type="text" class="validate" name="apellido" required>
 				          <label for="icon_prefix">Apellido	</label>
 				        </div>
 				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">school</i>
-				          <input id="icon_prefix" type="text" class="validate" name="mat">
+				          <input id="icon_prefix" type="text" class="validate" name="mat" required>
 				          <label for="icon_prefix">*Matricula</label>
 				        </div>
 				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">email</i>
-				          <input id="icon_telephone" type="email" class="validate" name="correo">
+				          <input id="icon_telephone" type="email" class="validate" name="correo" required>
 				          <label for="icon_telephone" data-error="Correo no valido" data-success="Correo Valido">* Correo</label>
 				        </div>
 				        <div class="input-field col s6 offset-m1 m4">
@@ -46,7 +46,7 @@
 				        </div>
 				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">https</i>
-				          <input id="icon_telephone" type="password" class="validate" name="pass">
+				          <input id="icon_telephone" type="password" class="validate" name="pass" required>
 				          <label for="icon_telephone">* Contraseña</label>
 				        </div>
     			</form>
