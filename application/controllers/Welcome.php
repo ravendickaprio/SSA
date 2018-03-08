@@ -6,6 +6,8 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		$this->load->model('MProfesor');
 		$this->load->model('MAlumno');
+		$this->load->helper(array('form'));
+        $this->load->library('form_validation');
 		//$this->load->library('encryption');
 
 	}
@@ -92,21 +94,22 @@ class Welcome extends CI_Controller {
 		$profesor['cube']= $this->input->post('cubi');
 		$profesor['pass']= $this->input->post('pass');
 		$profesor['mail']= $this->input->post('correo');
-		//$this->form_validation->set_rules('id','mat','required|min_length[6]');
-		//$this->form_validation->set_rules('name','nombre','required');
-		//$this->form_validation->set_rules('lastname','apellido','required');
-		//$this->form_validation->set_rules('ext','cel','numeric');
-		//$this->form_validation->set_rules('cubiculo','cubi','numeric');
-		//$this->form_validation->set_rules('pass','pass','required');
-		//$this->form_validation->set_rules('mail','correo','required|valid_email');
-        //if ($this->form_validation->run() == FALSE)
-        //{
-			//redirect("/Welcome/RegisterP/","location");
-        //}
-        //else
-        //{
+		$this->form_validation->set_rules('mat','mat','required|min_length[8]|max_length[10]');
+		$this->form_validation->set_rules('nombre','nombre','required');
+		$this->form_validation->set_rules('apellido','apellido','required');
+		$this->form_validation->set_rules('cel','cel','numeric');
+		$this->form_validation->set_rules('cubi','cubi','numeric');
+		$this->form_validation->set_rules('pass','pass','required');
+		$this->form_validation->set_rules('correo','correo','required|valid_email');
+        if ($this->form_validation->run() == FALSE)
+        {
+			redirect("/Welcome/RegisterP/","location");
+        }
+        else
+        {
 			$this->MProfesor->registrar($profesor);
-        //}
+			redirect("/Welcome/","location");
+        }
 	}
 	public function Registrar_Alumno(){
 		$alumno['id']= $this->input->post('mat');
@@ -116,20 +119,22 @@ class Welcome extends CI_Controller {
 		$alumno['phone']= $this->input->post('cel');
 		$alumno['eduprogram']= $this->input->post('PE');
 		$alumno['pass']= $this->input->post('pass');
-		//$this->form_validation->set_rules('id','id','required|min_length[9]');
-		//$this->form_validation->set_rules('lastname','apellido','required');
-		//$this->form_validation->set_rules('ext','cel','required|numeric');
-		//$this->form_validation->set_rules('mail','correo','required|valid_email');
-		//$this->form_validation->set_rules('programedu','PE','required');
-		//$this->form_validation->set_rules('pass','pass','required');
-		//if ($this->form_validation->run() == FALSE)
-        //{
-			//redirect("/Welcome/RegisterA","location");
-        //}
-        //else
-        //{
+		$this->form_validation->set_rules('mat','mat','required|min_length[8]|max_length[10]');
+		$this->form_validation->set_rules('nombre','nombre','required');
+		$this->form_validation->set_rules('apellido','apellido','required');
+		$this->form_validation->set_rules('cel','cel','required|numeric');
+		$this->form_validation->set_rules('correo','correo','required|valid_email');
+		$this->form_validation->set_rules('PE','PE','required');
+		$this->form_validation->set_rules('pass','pass','required');
+		if ($this->form_validation->run() == FALSE)
+        {
+			redirect("/Welcome/RegisterA","location");
+        }
+        else
+        {
 			//redirect("/Welcome/","location");
 			$this->MAlumno->registrar($alumno);
-        //}
+			redirect("/Welcome/","location");
+        }
 	}
 }

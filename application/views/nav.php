@@ -133,7 +133,7 @@
 				=            Sin Session            =
 				==================================-->
 				
-				<li><a href="<?= site_url("/Welcome/Session/");?>" class="black-text"><i class="material-icons">fingerprint</i>Identificarse</a></li>
+				<li><a href="<?= site_url("/Welcome/Session/");?>" class="black-text"><i class="material-icons ">fingerprint</i>Identificarse</a></li>
 				
 				<li>	
 					<ul class="collapsible" data-collapsible="accordion">

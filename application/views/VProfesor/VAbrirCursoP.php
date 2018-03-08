@@ -2,7 +2,7 @@
 =            Registrar   Curso         =
 ================================-->
 
-<div class="container">
+<div class="container" >
 	<div class="card-panel">
 		<!--=============================================================
 		=            Inicio de Formulario por el Metodo Post            =
@@ -17,8 +17,8 @@
 						=            Desplegable de Tabla Materias            =
 						========================s============================-->
 						<div class="input-field col s6  offset-m1 m4">
-							<select name="mat">
-								<option value="" disabled selected>Materias</option>
+							<select name="mat" required>
+								<option value="" disabled selected>*Materias</option>
 								<?php foreach ($ress as $i => $ress):?>
 								<?php if ($ress!==false): ?>
 								<option value="<?php echo $ress->id ?>"><?php echo $ress->name ?></option>
@@ -33,8 +33,8 @@
 						<!--====  End of Desplegable de Tabla Materias  ====-->
 
 				        <div class="input-field col s6 m2">
-							<select name="pe">
-								<option value="" disabled selected>Periodo</option>
+							<select name="pe" required>
+								<option value="" disabled selected>*Periodo</option>
 								<option value="Primavera">Primavera</option>
 								<option value="Verano">Verano</option>
 								<option value="Otoño">Otoño</option>
@@ -42,14 +42,14 @@
 							<label>Elije el Periodo</label>
 						</div>
 				        <div class="input-field col s6 offset-m1 m2 ">
-				          <input id="icon_prefix" type="text" class="validate" name="nrc">
-				          <label for="icon_prefix">NRC </label>
+				          <input id="icon_prefix" type="text" class="validate" name="nrc" required>
+				          <label for="icon_prefix">* NRC </label>
 				        </div>
 
 
 						<div class="input-field col s6 m2">
-							<select name="seccion">
-								<option value="" disabled selected>Seccion</option>
+							<select name="seccion" required>
+								<option value="" disabled selected>*Seccion</option>
 								<option value="101">101</option>
 								<option value="102">102</option>
 								<option value="103">103</option>
@@ -63,11 +63,11 @@
 				       
 
 				        <div class="input-field col s6 offset-m1 m2">
-				          <input id="icon_prefix" type="text" class="datepicker" name="Finicio">
+				          <input id="icon_prefix" type="date" class="validate" name="Finicio" placeholder="Fecha Inicio">
 				          <label for="icon_prefix">Fecha Inicio</label>
 				        </div>
 						<div class="input-field col s6 m2">
-				          <input id="icon_prefix" type="text" class="datepicker" name="Ffinal">
+				          <input id="icon_prefix" type="date" class="validate" name="Ffinal" placeholder="Fecha Fin">
 				          <label for="icon_prefix">Fecha Fin</label>
 				        </div>
 				        <div class="input-field col s6 offset-m1 m2">

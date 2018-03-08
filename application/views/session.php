@@ -10,14 +10,14 @@
 				<h2 class="col offset-s1 offset-m1">Iniciar Session</h2>
 				<div class="input-field col offset-m2 m6 offset-s1 s10">
 					<i class="material-icons prefix">account_circle</i>
-					<input id="user" type="text" class="validate" name="user">
+					<input id="user" type="text" class="validate" name="user" onkeypress="return valida(event)" required>
 					<label for="user">ID (Matricula)</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col offset-m2 m6 offset-s1 s10">
 					<i class="material-icons prefix">https</i>
-					<input id="mat" type="password" class="validate" name="mat">
+					<input id="mat" type="password" class="validate" name="mat" required>
 					<label for="mat">Contraseña</label>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
 
 
 		<div class="row">
-			<p class="center-align"><button class="btn waves-effect">Iniciar Sesi&oacute;n</button></p>
+			<p class="center-align"><button class="btn waves-effect pulse">Iniciar Sesi&oacute;n</button></p>
 		</div>
 
 		</form>

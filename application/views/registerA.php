@@ -31,12 +31,12 @@
 				        </div>
 				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">school</i>
-				          <input id="icon_prefix" type="text" class="validate" name="mat" required>
+				          <input id="icon_prefix" type="text" class="validate" name="mat" onkeypress="return valida(event)" required>
 				          <label for="icon_prefix">* Matricula</label>
 				        </div>
 				        <div class="input-field col s6 offset-m1 m4">
 				          <i class="material-icons prefix">phone</i>
-				          <input id="icon_telephone" type="tel" class="validate" name="cel" required>
+				          <input id="icon_telephone" type="tel" class="validate" name="cel" onkeypress="return valida(event)" required>
 				          <label for="icon_telephone">* Telefono</label>
 				        </div>
 				        <div class="input-field col s6 offset-m1 m4">

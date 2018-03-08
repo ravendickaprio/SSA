@@ -132,6 +132,26 @@ class MProfesor extends CI_Model {
       	} 
 	}
 	/*=====  End of Registrar Alumnos al curso  ======*/
+	/*====================================================================
+	=            Regresar Calificaciones de Alumnos Por curso            =
+	====================================================================*/
+	
+	public function calificacionesporMateria ($curs){
+		$this->db->select('c.idAlumno,c.Promedio,');
+		$this->db->from('calificaciones c');
+		$this->db->where("idCurso", $curs);
+
+		$resn=$this->db->get();
+		if($resn->num_rows()>0){
+			
+			return $resn->result();
+		} else {
+			return false;
+		}
+	}
+	
+	/*=====  End of Regresar Calificaciones de Alumnos Por curso  ======*/
+	
 
 	public function Check($user, $password) {
 		$this->db->select("id, name, pass, level")->where("id",$user)->where("pass",$password);

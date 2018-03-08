@@ -8,6 +8,8 @@ class CProfesor extends CI_Controller {
 		$this->load->library('grocery_CRUD');
 		$this->load->model('MProfesor');
 		$this->load->model('MAlumno');
+		$this->load->helper(array('form'));
+        $this->load->library('form_validation');
 	}
 	public function Index(){
 		if ($this->session->userdata('s_level')!==NULL) {
@@ -93,6 +95,7 @@ class CProfesor extends CI_Controller {
 	=            Registrar Curso            =
 	=======================================*/
 	public function RegistraCuerso(){
+
 		/*----------  recuperar datos del view metodod POST  ----------*/
 		$curso['idProfesor']= $this->session->userdata('s_id');
 		$curso['idMateria']= $this->input->post('mat');
@@ -110,8 +113,25 @@ class CProfesor extends CI_Controller {
 		$curso['FechaFin']= $this->input->post('Ffinal');
 		$curso['Salon']= $this->input->post('salon');
 		$curso['Horario']= $this->input->post('horario');
-		$this->MProfesor->RegistrarCurso($curso);
-		redirect("/CProfesor/","location");
+
+		//$this->form_validation->set_rules('mat','mat','required|min_length[8]|max_length[10]');
+		$this->form_validation->set_rules('mat','mat','required');
+		$this->form_validation->set_rules('seccion','seccion','required|numeric');
+		$this->form_validation->set_rules('nrc','nrc','required');
+		$this->form_validation->set_rules('pe','pe','required');
+		$this->form_validation->set_rules('Finicio','Finicio','required');
+		$this->form_validation->set_rules('Ffinal','Ffinal','required');
+		if ($this->form_validation->run() == FALSE)
+        {
+			redirect("/CProfesor/abrircurso","location");
+        }
+        else
+        {
+			$this->MProfesor->RegistrarCurso($curso);
+			redirect("/CProfesor/","location");
+        }
+
+		
 	}
 	/*=====  End of Registrar Curso  ======*/
 	
@@ -336,11 +356,62 @@ class CProfesor extends CI_Controller {
 		$this->load->view("footer");
 	}
 	/*=====  End of View de Cursos con Grocery CRUD  ======*/
-	public function Estadisticas()
+	/*===================================================
+	=            Muestra Estadisticas Pastel            =
+	===================================================*/
+	public function mostrarEstadistica()
 	{
-		$this->load->view("header");
+		$curso=$this->input->post('curso');
+		$ress= $this->MProfesor->calificacionesporMateria($curso);
+		/*<?php foreach ($ress as $i => $ress):?>
+								<?php if ($ress!==false): ?>
+								<option value="<?php echo $ress->id ?>"><?php echo $ress->name ?></option>
+								<?php else: ?>
+								<option value="" disabled="">Materias no disponibles</option>
+								
+								<?php endif ?>
+								<?php endforeach;?>*/
+		$cosa = array(0,0,0,0,0,0);
+		foreach ($ress as $i => $ress) {
+			if ($ress->Promedio<5.0) {
+				$cosa[0]=$cosa[0]+1;
+			}
+			if ($ress->Promedio>5.0 && $ress->Promedio<6.0) {
+				$cosa[1]=$cosa[1]+1;
+			}
+			if ($ress->Promedio>6.0 && $ress->Promedio<7.0) {
+				$cosa[2]=$cosa[2]+1;
+			}
+			if ($ress->Promedio>7.0 && $ress->Promedio<8.0) {
+				$cosa[3]=$cosa[3]+1;
+			}
+			if ($ress->Promedio>8.0 && $ress->Promedio<9.0) {
+				$cosa[4]=$cosa[4]+1;
+			}
+			if ($ress->Promedio>9.0 && $ress->Promedio<10.0) {
+				$cosa[5]=$cosa[5]+1;
+			}
+		}
+		$data["rns"]=$cosa;
+		//$this->load->view("header2",$data);
+		$this->load->view("header3",$data);
 		$this->load->view("nav");
-		$this->load->view("VProfesor/VEstadisticas");
+		//$this->load->view("VProfesor/VEstadisticas");
+		$this->load->view("VProfesor/VEstadisticas2");
 		$this->load->view("footer");
 	}
+	
+	
+	/*=====  End of Muestra Estadisticas Pastel  ======*/
+	
+	public function Estadisticas()
+	{
+		$data["ress2"]= $this->MProfesor->seleccionacurso();
+		
+		$this->load->view("header2");
+		$this->load->view("nav");
+		$this->load->view("VProfesor/VSeleccionarMateria2",$data);
+		$this->load->view("footer");
+	}
+	
 }

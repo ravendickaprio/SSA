@@ -2,7 +2,7 @@
 =         Seleccionar Materia y Enviar a Subri Calificaciones                =
 ===============================================-->
 
-<div class="container">
+<div class="container" >
 	<div class="card-panel">
 		<!--=============================================================
 		=            Inicio de Formulario por el Metodo Post            =
